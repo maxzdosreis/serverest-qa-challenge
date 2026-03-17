@@ -1,0 +1,27 @@
+{
+  "name": "serverest-qa-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxzdosreis/serverest-qa-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/maxzdosreis/serverest-qa-challenge/issues"
+  },
+  "homepage": "https://github.com/maxzdosreis/serverest-qa-challenge#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.5.0"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^10.3.0",
+    "dotenv": "^17.3.1"
+  }
+}
