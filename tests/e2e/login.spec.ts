@@ -8,7 +8,7 @@ test.describe('Login', () => {
 
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
-        await loginPage.navigate();2
+        await loginPage.navigate();
     });
 
     test('deve realizar login com credenciais válidas', async ({ page }) => {
