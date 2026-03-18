@@ -8,7 +8,7 @@ export async function getAuthToken(): Promise<string> {
 
     // Cria um usuário administrador
     const user = makeUser({ administrador: 'true' });
-    await context.post('/usuario', { data: user });
+    await context.post('/usuarios', { data: user });
 
     // Faz login e retorna o token
     const response = await context.post('/login', {
