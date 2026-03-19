@@ -30,6 +30,6 @@ export class HomePageAdmin {
     }
 
     async navigate() {
-        await this.page.goto('/admin/home')
+        await this.page.goto('/home')
     }
 }
