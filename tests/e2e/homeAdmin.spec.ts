@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../../pages/LoginPage';
-import { CadastroPage } from '../../pages/CadastroPage';
+import { CadastroPage } from '../../pages/CadastroUsuarioPage';
 import { HomePageAdmin } from '../../pages/HomePageAdmin';
 import { makeUser } from '../../support/factories/userFactory';
 

@@ -68,6 +68,59 @@ test.describe('POST /produtos', () => {
     });
 });
 
+test.describe('PUT /produtos', () => {
+    test('deve atualizar dados de um produto existente', async ({ request }) => {
+        const token = await getAuthToken();
+
+        // Cria um produto para atualizar
+        const produto = makeProduto();
+        const created = await request.post('/produtos', {
+            data: produto,
+            headers: { Authorization: token },
+        });
+        const { _id } = await created.json();
+
+        const updatedProduto = makeProduto();
+        const response = await request.put(`/produtos/${_id}`, {
+            data: updatedProduto,
+            headers: { Authorization: token },
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(200);
+        expect(body.message).toBe('Registro alterado com sucesso');
+    });
+
+    test('deve criar produto ao fazer PUT com ID inexistente', async ({ request }) => {
+        const token = await getAuthToken();
+
+        const produto = makeProduto();
+        const response = await request.put('/produtos/1234567890123456', {
+            data: produto,
+            headers: { Authorization: token },
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(201);
+        expect(body.message).toBe('Cadastro realizado com sucesso');
+        expect(body).toHaveProperty('_id');
+    });
+
+    test('deve rejeitar atualização de produto sem token', async ({ request }) => {
+        const produto = makeProduto();
+        const response = await request.put('/produtos/1234567890123456', {
+            data: produto,
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(401);
+        expect(body.message).toBe('Token de acesso ausente, inválido, expirado ou usuário do token não existe mais');
+    });
+});
+
 test.describe('DELETE /produtos', () => {
     test('deve deletar produto existente', async ({ request }) => {
         const token = await getAuthToken();

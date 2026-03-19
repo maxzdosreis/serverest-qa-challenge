@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { CadastroPage } from '../../pages/CadastroPage';
+import { CadastroPage } from '../../pages/CadastroUsuarioPage';
 import { HomePageUser } from '../../pages/HomePageUser';
 import { makeUser } from '../../support/factories/userFactory';
 import { LoginPage } from '../../pages/LoginPage';
