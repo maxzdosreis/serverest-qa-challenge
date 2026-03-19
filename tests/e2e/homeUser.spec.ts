@@ -16,7 +16,7 @@ test.describe('Home - Usuário Comum', () => {
         const user = makeUser({ administrador: 'false' });
         await cadastroPage.navigate();
         await cadastroPage.cadastrar(user.nome, user.email, user.password, false);
-        await page.waitForURL(/home/);
+        await page.waitForURL('/home');
     });
 
     test('deve exibir a Serverest Store', async ({ page }) => {

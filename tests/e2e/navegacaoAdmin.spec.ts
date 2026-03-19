@@ -16,7 +16,7 @@ test.describe('Navegação', () => {
         const user = makeUser();
         await cadastroPage.navigate();
         await cadastroPage.cadastrar(user.nome, user.email, user.password, true);
-        await page.waitForURL(/home/);
+        await page.waitForURL('/admin/home');
     });
 
     test('deve navegar para cadastro de usuários pelo menu', async ({ page }) => {

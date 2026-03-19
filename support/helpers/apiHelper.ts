@@ -10,6 +10,8 @@ export async function getAuthToken(): Promise<string> {
     const user = makeUser({ administrador: 'true' });
     await context.post('/usuarios', { data: user });
 
+    await new Promise(resolve => setTimeout(resolve, 300));
+
     // Faz login e retorna o token
     const response = await context.post('/login', {
         data: { email: user.email, password: user.password},
@@ -18,5 +20,5 @@ export async function getAuthToken(): Promise<string> {
     const body = await response.json();
     await context.dispose();
 
-    return body.authorization;
+    return body.authorization as string;
 }
