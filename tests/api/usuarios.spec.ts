@@ -68,6 +68,58 @@ test.describe('POST/usuarios', () => {
     });
 });
 
+test.describe('PUT /usuarios', () => {
+    test('deve atualizar dados de um usuário existente', async ({ request }) => {
+        // Cria um usuário para atualizar
+        const user = makeUser();
+        const created = await request.post('/usuarios', { data: user });
+        const { _id } = await created.json();
+
+        const updatedUser = makeUser();
+        const response = await request.put(`/usuarios/${_id}`, {
+            data: updatedUser,
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(200);
+        expect(body.message).toBe('Registro alterado com sucesso');
+    });
+
+    test('deve criar usuário ao fazer PUT com ID inexistente', async ({ request }) => {
+        const user = makeUser();
+        const response = await request.put('/usuarios/1234567890123456', {
+            data: user,
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(201);
+        expect(body.message).toBe('Cadastro realizado com sucesso');
+        expect(body).toHaveProperty('_id');
+    });
+
+    test('deve rejeitar atualização com email já existente', async ({ request }) => {
+        // Cria dois usuários
+        const user1 = makeUser();
+        const user2 = makeUser();
+
+        await request.post('/usuarios', { data: user1 });
+        const created2 = await request.post('/usuarios', { data: user2 });
+        const { _id } = await created2.json();
+
+        // Tenta atualizar user2 com o email do user1
+        const response = await request.put(`/usuarios/${_id}`, {
+            data: { ...user2, email: user1.email }, 
+        });
+
+        const body = await response.json();
+
+        expect(response.status()).toBe(400);
+        expect(body.message).toBe('Este email já está sendo usado');
+    });
+});
+
 test.describe('DELETE /usuarios', () => {
     test('deve deletar usuário existente', async ({ request }) => {
         const user = makeUser();
