@@ -4,7 +4,7 @@ import { CadastroPage } from '../../pages/CadastroPage';
 import { HomePageAdmin } from '../../pages/HomePageAdmin';
 import { makeUser } from '../../support/factories/userFactory';
 
-test.describe('Home', () => {
+test.describe('Home - Usuário Admin', () => {
     let loginPage: LoginPage;
     let homePageAdmin: HomePageAdmin;
 
