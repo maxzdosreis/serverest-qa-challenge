@@ -20,15 +20,14 @@ export class CadastroProdutoPage {
     }
 
     async navigate() {
-        await this.page.goto('/admin/')
+        await this.page.goto('/admin/cadastrarprodutos');
     }
 
-    async cadastrarProduto(nome: string, preco: number, descricao: string, quantidade: number, imagem: string) {
+    async cadastrarProduto(nome: string, preco: number, descricao: string, quantidade: number) {
         await this.nomeInput.fill(nome);
         await this.precoInput.fill(String(preco));
         await this.descricaoInput.fill(descricao);
         await this.quantidadeInput.fill(String(quantidade));
-        await this.imagemInput.fill(imagem);
         await this.cadastrarButton.click();
     }
 }
