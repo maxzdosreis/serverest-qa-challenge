@@ -1,7 +1,8 @@
-# ServeRest QA Challenge 🧪
-![Playwright Tests](https://github.com/maxzdosreis/serverest-qa-challenge/actions/workflows/playwright.yml/badge.svg)
+# ServeRest QA Challenge 🧪 
 
 Projeto de automação de testes desenvolvido como desafio técnico para a vaga de QA Júnior.
+
+![Playwright Tests](https://github.com/maxzdosreis/serverest-qa-challenge/actions/workflows/playwright.yml/badge.svg)
 
 ## 📋 Sobre o Projeto
 
